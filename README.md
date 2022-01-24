@@ -7,4 +7,4 @@
 sh newSystemEvn_install.sh {yum | mysql | nginx | ffmpeg | docker}
 ```
 
-注意：安装所需用到的tar包等安装包在另一个git仓库中
+注意：安装所需用到的tar包等安装包需提前在pkg目录中下载

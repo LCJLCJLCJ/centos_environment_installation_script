@@ -3,6 +3,14 @@
 # 变量定义
 newMySQLTar="mysql-8.0.28-1.el7.x86_64.rpm-bundle.tar"
 tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
+# 校验安装包是否存在
+sh check_pkg.sh $tarPkgPath$newMySQLTar
+if [ $? -ne 0 ];then
+	echo "pkg file:[ $newMySQLTar ] is ok"
+else
+	echo "Error: pkg file:[ $newMySQLTar ] error, please confirm it"
+	exit 0
+fi
 
 
 # # 安装yum

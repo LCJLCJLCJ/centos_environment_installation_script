@@ -3,6 +3,14 @@
 # 变量定义
 newFFmpegTar="ffmpeg-release-amd64-static.tar.xz"
 tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
+# 校验安装包是否存在
+sh check_pkg.sh $tarPkgPath$newFFmpegTar
+if [ $? -ne 0 ];then
+	echo "pkg file:[ $newFFmpegTar ] is ok"
+else
+	echo "Error: pkg file:[ $newFFmpegTar ] error, please confirm it"
+	exit 0
+fi
 
 # 安装ffmpeg
 cp $tarPkgPath$newFFmpegTar /usr/local/

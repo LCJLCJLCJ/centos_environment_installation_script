@@ -3,6 +3,14 @@
 # 变量定义
 newNginxTar="nginx-1.21.5.tar.gz"
 tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
+# 校验安装包是否存在
+sh check_pkg.sh $tarPkgPath$newNginxTar
+if [ $? -ne 0 ];then
+	echo "pkg file:[ $newNginxTar ] is ok"
+else
+	echo "Error: pkg file:[ $newNginxTar ] error, please confirm it"
+	exit 0
+fi
 
 
 # 安装yum
