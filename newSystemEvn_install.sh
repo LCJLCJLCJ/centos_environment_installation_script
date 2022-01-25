@@ -29,9 +29,13 @@ docker)
        echo -e "run Docker_evn_install.sh \n"
        sh $scriptPath"Docker_evn_install.sh"
        ;;
+rabbitmq)
+       echo -e "run RabbitMQ_evn_install.sh \n"
+       sh $scriptPath"RabbitMQ_evn_install.sh"
+       ;;
 *)
        # echo -e "Usage:\n $0 __xxx__\n\n__xxx__ include such as:\n{\n  yum | mysql | nginx | ffmpeg | docker \n}"
-       echo -e "Usage:\n $0 { yum | mysql | nginx | ffmpeg | docker }"
+       echo -e "Usage:\n $0 { yum | mysql | nginx | ffmpeg | docker  | rabbitmq }"
        exit 1
 esac
 
