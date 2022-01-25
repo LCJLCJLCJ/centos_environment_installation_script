@@ -4,7 +4,8 @@
 newNginxTar="nginx-1.21.5.tar.gz"
 tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
 # 校验安装包是否存在
-sh check_pkg.sh $tarPkgPath$newNginxTar
+check_pkg_sh=`echo $tarPkgPath |awk -F "pkg/" '{print $1}'`"check_pkg.sh"
+sh $check_pkg_sh $tarPkgPath$newNginxTar
 if [ $? -ne 0 ];then
 	echo "pkg file:[ $newNginxTar ] is ok"
 else

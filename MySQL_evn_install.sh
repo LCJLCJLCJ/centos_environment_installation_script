@@ -4,7 +4,8 @@
 newMySQLTar="mysql-8.0.28-1.el7.x86_64.rpm-bundle.tar"
 tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
 # 校验安装包是否存在
-sh check_pkg.sh $tarPkgPath$newMySQLTar
+check_pkg_sh=`echo $tarPkgPath |awk -F "pkg/" '{print $1}'`"check_pkg.sh"
+sh $check_pkg_sh $tarPkgPath$newMySQLTar
 if [ $? -ne 0 ];then
 	echo "pkg file:[ $newMySQLTar ] is ok"
 else

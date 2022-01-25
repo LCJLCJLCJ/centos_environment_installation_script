@@ -4,7 +4,8 @@
 newFFmpegTar="ffmpeg-release-amd64-static.tar.xz"
 tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
 # 校验安装包是否存在
-sh check_pkg.sh $tarPkgPath$newFFmpegTar
+check_pkg_sh=`echo $tarPkgPath |awk -F "pkg/" '{print $1}'`"check_pkg.sh"
+sh $check_pkg_sh $tarPkgPath$newFFmpegTar
 if [ $? -ne 0 ];then
 	echo "pkg file:[ $newFFmpegTar ] is ok"
 else
