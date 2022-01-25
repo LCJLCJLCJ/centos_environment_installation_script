@@ -38,6 +38,8 @@ echo -e "\n"
 
 # 开放端口
 echo "firewall add-port:"
+set -x 			# 对脚本内部部分代码进行跟踪，被跟踪的代码以set -x开始，于set +x结束
 firewall-cmd --zone=public --add-port=80/tcp --permanent
 firewall-cmd --reload
 firewall-cmd --zone=public --list-ports
+set +x

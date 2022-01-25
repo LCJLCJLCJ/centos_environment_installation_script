@@ -28,5 +28,9 @@ echo -e "\nffmpeg installed complete"
 echo `ls -l /usr/bin/ffmpeg`
 echo `ls -l /usr/bin/ffprobe`
 
+set -x 			# 对脚本内部部分代码进行跟踪，被跟踪的代码以set -x开始，于set +x结束
+
 rm -rf /usr/local/$ffmpegInstallDir
 rm $ffmpegTarTmp
+
+set +x
