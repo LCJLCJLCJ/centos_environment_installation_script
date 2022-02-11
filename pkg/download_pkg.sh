@@ -8,4 +8,8 @@ wget https://nginx.org/download/nginx-1.21.5.tar.gz
 
 wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
 
+wget https://go.dev/dl/go1.17.7.linux-amd64.tar.gz
+
+wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.1.tgz
+
 set +x

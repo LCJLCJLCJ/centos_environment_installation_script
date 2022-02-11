@@ -33,9 +33,17 @@ rabbitmq)
        echo -e "run RabbitMQ_evn_install.sh \n"
        sh $scriptPath"RabbitMQ_evn_install.sh"
        ;;
+go)
+       echo -e "run Golang_evn_install.sh \n"
+       sh $scriptPath"Golang_evn_install.sh"
+       ;;
+mongodb)
+       echo -e "run Mongodb_evn_install.sh \n"
+       sh $scriptPath"Mongodb_evn_install.sh"
+       ;;
 *)
        # echo -e "Usage:\n $0 __xxx__\n\n__xxx__ include such as:\n{\n  yum | mysql | nginx | ffmpeg | docker \n}"
-       echo -e "Usage:\n $0 { yum | mysql | nginx | ffmpeg | docker  | rabbitmq }"
+       echo -e "Usage:\n $0 { yum | mysql | nginx | ffmpeg | docker  | rabbitmq  | go  | mongodb }"
        exit 1
 esac
 
