@@ -17,6 +17,10 @@ mysql)
        echo -e "run MySQL_evn_install.sh \n"
        sh $scriptPath"MySQL_evn_install.sh"
        ;;
+mysql_57)
+       echo -e "run MySQL_57_evn_install.sh \n"
+       sh $scriptPath"MySQL_57_evn_install.sh"
+       ;;
 nginx)
        echo -e "run Nginx_evn_install.sh \n"
        sh $scriptPath"Nginx_evn_install.sh"
@@ -43,7 +47,7 @@ mongodb)
        ;;
 *)
        # echo -e "Usage:\n $0 __xxx__\n\n__xxx__ include such as:\n{\n  yum | mysql | nginx | ffmpeg | docker \n}"
-       echo -e "Usage:\n $0 { yum | mysql | nginx | ffmpeg | docker  | rabbitmq  | go  | mongodb }"
+       echo -e "Usage:\n $0 { yum | mysql | mysql_57 | nginx | ffmpeg | docker  | rabbitmq  | go  | mongodb }"
        exit 1
 esac
 
