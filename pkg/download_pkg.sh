@@ -12,4 +12,6 @@ wget https://go.dev/dl/go1.17.7.linux-amd64.tar.gz
 
 wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.1.tgz
 
+wget https://download.docker.com/linux/static/stable/x86_64/docker-18.06.3-ce.tgz
+
 set +x

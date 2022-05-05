@@ -33,6 +33,10 @@ docker)
        echo -e "run Docker_evn_install.sh \n"
        sh $scriptPath"Docker_evn_install.sh"
        ;;
+docker_offline)
+       echo -e "run Docker_evn_install_offline.sh \n"
+       sh $scriptPath"Docker_evn_install_offline.sh"
+       ;;
 rabbitmq)
        echo -e "run RabbitMQ_evn_install.sh \n"
        sh $scriptPath"RabbitMQ_evn_install.sh"
@@ -49,9 +53,13 @@ mongodb)
        echo -e "run Mongodb_evn_install.sh \n"
        sh $scriptPath"Mongodb_evn_install.sh"
        ;;
+rmDockerEnv)
+       echo -e "run Uninstall_Docker_evn_.sh to remove docker env\n"
+       sh $scriptPath"Uninstall_Docker_evn_.sh"
+       ;;
 *)
        # echo -e "Usage:\n $0 __xxx__\n\n__xxx__ include such as:\n{\n  yum | mysql | nginx | ffmpeg | docker \n}"
-       echo -e "Usage:\n $0 { yum | mysql | mysql_57 | nginx | ffmpeg | docker | rabbitmq | go | beego | mongodb }"
+       echo -e "Usage:\n $0 { yum | mysql | mysql_57 | nginx | ffmpeg | docker | docker_offline | rabbitmq | go | beego | mongodb | rmDockerEnv}"
        exit 1
 esac
 
