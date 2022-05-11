@@ -14,4 +14,6 @@ wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.1.tgz
 
 wget https://download.docker.com/linux/static/stable/x86_64/docker-18.06.3-ce.tgz
 
+wget https://download.redis.io/releases/redis-7.0.0.tar.gz
+
 set +x
