@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # 变量定义
-newNginxTar="nginx-1.21.5.tar.gz"
+installPackages="nginx-1.21.5.tar.gz"
 tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
 # 校验安装包是否存在
 check_pkg_sh=`echo $tarPkgPath |awk -F "pkg/" '{print $1}'`"check_pkg.sh"
-sh $check_pkg_sh $tarPkgPath$newNginxTar
+sh $check_pkg_sh $tarPkgPath$installPackages
 if [ $? -ne 0 ];then
-	echo "pkg file:[ $newNginxTar ] is ok"
+	echo "pkg file:[ $installPackages ] is ok"
 else
-	echo "Error: pkg file:[ $newNginxTar ] error, please confirm it"
+	echo "Error: pkg file:[ $installPackages ] error, please confirm it"
 	exit 0
 fi
 
@@ -20,8 +20,8 @@ yum install -y gcc gcc-c++ pcre pcre-devel  zlib zlib-devel  openssl openssl-dev
 
 
 # 安装nginx
-tar zxf $tarPkgPath$newNginxTar -C /usr/local/
-nginxInstallDir=`echo $newNginxTar |awk -F ".tar.gz" '{print $1}'`
+tar zxf $tarPkgPath$installPackages -C /usr/local/
+nginxInstallDir=`echo $installPackages |awk -F ".tar.gz" '{print $1}'`
 cd /usr/local/$nginxInstallDir
 ./configure
 make
@@ -38,8 +38,8 @@ echo -e "\n"
 
 # 开放端口
 echo "firewall add-port:"
-set -x 			# 对脚本内部部分代码进行跟踪，被跟踪的代码以set -x开始，于set +x结束
+# set -x 			# 对脚本内部部分代码进行跟踪，被跟踪的代码以set -x开始，于set +x结束
 firewall-cmd --zone=public --add-port=80/tcp --permanent
 firewall-cmd --reload
 firewall-cmd --zone=public --list-ports
-set +x
+# set +x

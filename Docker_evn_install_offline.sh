@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # 变量定义
-newDockerTar="docker-18.06.3-ce.tgz"
+installPackages="docker-18.06.3-ce.tgz"
 tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
 # 校验安装包是否存在
 check_pkg_sh=`echo $tarPkgPath |awk -F "pkg/" '{print $1}'`"check_pkg.sh"
-sh $check_pkg_sh $tarPkgPath$newDockerTar
+sh $check_pkg_sh $tarPkgPath$installPackages
 if [ $? -ne 0 ];then
-	echo "pkg file:[ $newDockerTar ] is ok"
+	echo "pkg file:[ $installPackages ] is ok"
 else
-	echo "Error: pkg file:[ $newDockerTar ] error, please confirm it"
+	echo "Error: pkg file:[ $installPackages ] error, please confirm it"
 	exit 0
 fi
 
@@ -18,7 +18,7 @@ fi
 cd /opt/
 mkdir dockerInstallTmpDir
 cd dockerInstallTmpDir
-cp $tarPkgPath$newDockerTar /opt/dockerInstallTmpDir
+cp $tarPkgPath$installPackages /opt/dockerInstallTmpDir
 
 # 生成docker.service文件
 touch docker.service
@@ -57,7 +57,7 @@ echo "[Install]" >> docker.service
 echo "WantedBy=multi-user.target" >> docker.service
 
 echo '解压tar包...'
-tar -xvf $newDockerTar
+tar -xvf $installPackages
 cp docker/* /usr/bin/
 chmod 777 /usr/bin/docker*
 

@@ -53,13 +53,28 @@ mongodb)
        echo -e "run Mongodb_evn_install.sh \n"
        sh $scriptPath"Mongodb_evn_install.sh"
        ;;
+redis)
+       echo -e "run Redis_evn_install.sh \n"
+       sh $scriptPath"Redis_evn_install.sh"
+       ;;
+lua)
+       echo -e "run Lua_evn_install.sh \n"
+       sh $scriptPath"Lua_evn_install.sh"
+       ;;
 rmDockerEnv)
        echo -e "run Uninstall_Docker_evn_.sh to remove docker env\n"
        sh $scriptPath"Uninstall_Docker_evn_.sh"
        ;;
 *)
        # echo -e "Usage:\n $0 __xxx__\n\n__xxx__ include such as:\n{\n  yum | mysql | nginx | ffmpeg | docker \n}"
-       echo -e "Usage:\n $0 { yum | mysql | mysql_57 | nginx | ffmpeg | docker | docker_offline | rabbitmq | go | beego | mongodb | rmDockerEnv}"
+       # echo -e "Usage:\n $0 { yum || beego | docker | docker_offline | ffmpeg | go | lua | mongodb | mysql | mysql_57 | nginx | rabbitmq | redis ||| rmDockerEnv }"
+       echo "Need the required parameters,
+Usage:
+$0 __xxx__
+__xxx__ contain such as:
+{ 
+| yum | beego | docker | docker_offline | ffmpeg | go | lua | mongodb | mysql | mysql_57 | nginx | rabbitmq | redis | rmDockerEnv | 
+}"
        exit 1
 esac
 

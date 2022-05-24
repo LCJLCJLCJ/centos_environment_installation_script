@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # 变量定义
-newMySQLTar="mysql-8.0.28-1.el7.x86_64.rpm-bundle.tar"
+installPackages="mysql-8.0.28-1.el7.x86_64.rpm-bundle.tar"
 tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
 # 校验安装包是否存在
 check_pkg_sh=`echo $tarPkgPath |awk -F "pkg/" '{print $1}'`"check_pkg.sh"
-sh $check_pkg_sh $tarPkgPath$newMySQLTar
+sh $check_pkg_sh $tarPkgPath$installPackages
 if [ $? -ne 0 ];then
-	echo "pkg file:[ $newMySQLTar ] is ok"
+	echo "pkg file:[ $installPackages ] is ok"
 else
-	echo "Error: pkg file:[ $newMySQLTar ] error, please confirm it"
+	echo "Error: pkg file:[ $installPackages ] error, please confirm it"
 	exit 0
 fi
 
@@ -40,7 +40,7 @@ fi
 # 安装MySQL
 mkdir -p /usr/local/mysql
 cd /usr/local/mysql
-tar xvf $tarPkgPath$newMySQLTar -C /usr/local/mysql
+tar xvf $tarPkgPath$installPackages -C /usr/local/mysql
 mysql_common=`ls | grep "mysql-community-common"`
 mysql_devel=`ls | grep "mysql-community-devel"`
 mysql_libs=`ls | grep -v "compat"| grep "mysql-community-libs"`
@@ -76,15 +76,15 @@ echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 mysql -uroot -p$mysql_pwd
 echo "exit MySQL"
 
-set -x 			# 对脚本内部部分代码进行跟踪，被跟踪的代码以set -x开始，于set +x结束
+# set -x 			# 对脚本内部部分代码进行跟踪，被跟踪的代码以set -x开始，于set +x结束
 rm -rf /usr/local/mysql/
-set +x
+# set +x
 
 
 # 开放端口
 echo "firewall add-port:"
-set -x
+# set -x
 firewall-cmd --zone=public --add-port=3306/tcp --permanent
 firewall-cmd --reload
 firewall-cmd --zone=public --list-ports
-set +x
+# set +x

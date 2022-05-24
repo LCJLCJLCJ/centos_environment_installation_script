@@ -16,4 +16,6 @@ wget https://download.docker.com/linux/static/stable/x86_64/docker-18.06.3-ce.tg
 
 wget https://download.redis.io/releases/redis-7.0.0.tar.gz
 
+wget http://www.lua.org/ftp/lua-5.4.4.tar.gz
+
 set +x

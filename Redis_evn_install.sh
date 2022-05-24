@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # 变量定义
-newRedisTar="redis-7.0.0.tar.gz"
+installPackages="redis-7.0.0.tar.gz"
 tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
 # 校验安装包是否存在
 check_pkg_sh=`echo $tarPkgPath |awk -F "pkg/" '{print $1}'`"check_pkg.sh"
-sh $check_pkg_sh $tarPkgPath$newRedisTar
+sh $check_pkg_sh $tarPkgPath$installPackages
 if [ $? -ne 0 ];then
-	echo "pkg file:[ $newRedisTar ] is ok"
+	echo "pkg file:[ $installPackages ] is ok"
 else
-	echo "Error: pkg file:[ $newRedisTar ] error, please confirm it"
+	echo "Error: pkg file:[ $installPackages ] error, please confirm it"
 	exit 0
 fi
 
@@ -26,8 +26,8 @@ fi
 
 
 # 安装redis
-tar zxf $tarPkgPath$newRedisTar -C /usr/local/
-redisInstallDir=`echo $newRedisTar |awk -F ".tar.gz" '{print $1}'`
+tar zxf $tarPkgPath$installPackages -C /usr/local/
+redisInstallDir=`echo $installPackages |awk -F ".tar.gz" '{print $1}'`
 cd /usr/local/$redisInstallDir
 make
 cd src

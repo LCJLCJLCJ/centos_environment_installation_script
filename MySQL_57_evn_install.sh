@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # 变量定义
-newMySQLTar="MySQL57_install_pkg.tar.gz"
+installPackages="MySQL57_install_pkg.tar.gz"
 tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
 # 校验安装包是否存在
 check_pkg_sh=`echo $tarPkgPath |awk -F "pkg/" '{print $1}'`"check_pkg.sh"
-sh $check_pkg_sh $tarPkgPath$newMySQLTar
+sh $check_pkg_sh $tarPkgPath$installPackages
 if [ $? -ne 0 ];then
-	echo "pkg file:[ $newMySQLTar ] is ok"
+	echo "pkg file:[ $installPackages ] is ok"
 else
-	echo "Error: pkg file:[ $newMySQLTar ] error, please confirm it"
+	echo "Error: pkg file:[ $installPackages ] error, please confirm it"
 	echo "or"
 	echo "Download from: [ 链接：https://pan.baidu.com/s/1XYHj8dzS1BF8Riv7lrzrgQ?pwd=mysq 提取码：mysq ]"
 	exit 0
@@ -42,9 +42,9 @@ fi
 # 安装MySQL
 mkdir -p /usr/local/mysql
 cd /usr/local/mysql
-tar xvf $tarPkgPath$newMySQLTar -C /usr/local/mysql
+tar xvf $tarPkgPath$installPackages -C /usr/local/mysql
 
-cd `echo $newMySQLTar |awk -F ".tar.gz" '{print $1}'`
+cd `echo $installPackages |awk -F ".tar.gz" '{print $1}'`
 #开始安装MySQL，注意：这些包安装是有顺序的
 rpm -ivh libaio-0.3.109-13.el7.x86_64.rpm
 #判断安装的过程是否成功

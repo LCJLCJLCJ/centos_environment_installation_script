@@ -23,26 +23,26 @@
 # 方法2  start：rpm安装
 
 # 变量定义
-newRabbitMQTar="rabbitmq-server-3.6.9-1.el7.noarch.rpm"
+installPackages="rabbitmq-server-3.6.9-1.el7.noarch.rpm"
 
 # cp 未完待续
 
 cd /usr/local
 wget --content-disposition https://packagecloud.io/rabbitmq/rabbitmq-server/packages/el/7/rabbitmq-server-3.6.9-1.el7.noarch.rpm/download.rpm
-rpmMd5Shell=`md5sum $newRabbitMQTar`
+rpmMd5Shell=`md5sum $installPackages`
 # d739a08b1845e35fe269da4b2e41f1c1  rabbitmq-server-3.6.9-1.el7.noarch.rpm
 rpmMd5=`echo $rpmMd5Shell |awk -F " " '{print $1}'`
 if [ $rpmMd5 == "d739a08b1845e35fe269da4b2e41f1c1" ];then
-	echo "pkg file:[ $newRabbitMQTar ] is ok"
+	echo "pkg file:[ $installPackages ] is ok"
 else
-	echo "error, rpm package is not [ $newRabbitMQTar ]"
+	echo "error, rpm package is not [ $installPackages ]"
 	exit 0
 fi
 
 # 安装
 yum install -y epel-release
 yum install -y erlang
-yum install -y $newRabbitMQTar
+yum install -y $installPackages
 rabbitmq-server -detached
 sleep 10
 
@@ -57,6 +57,6 @@ rabbitmqctl set_user_tags $user administrator
 rabbitmq-plugins enable rabbitmq_management
 systemctl restart rabbitmq-server
 
-rm -rf $newRabbitMQTar
+rm -rf $installPackages
 
 # 方法2  end

@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # 变量定义
-newBeegoTar="beego_install_pkg.tar.gz"
+installPackages="beego_install_pkg.tar.gz"
 tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
 includeGo="go1.15.6.linux-amd64.tar.gz"
 # 校验安装包是否存在
 check_pkg_sh=`echo $tarPkgPath |awk -F "pkg/" '{print $1}'`"check_pkg.sh"
-sh $check_pkg_sh $tarPkgPath$newBeegoTar
+sh $check_pkg_sh $tarPkgPath$installPackages
 if [ $? -ne 0 ];then
-	echo "pkg file:[ $newBeegoTar ] is ok"
+	echo "pkg file:[ $installPackages ] is ok"
 else
-	echo "Error: pkg file:[ $newBeegoTar ] error, please confirm it"
+	echo "Error: pkg file:[ $installPackages ] error, please confirm it"
 	echo "or"
 	echo "Download from: [ 链接：https://pan.baidu.com/s/1KUQfl-2VeGZAslGCDg5qqQ?pwd=bego 提取码：bego ]"
 	exit 0
@@ -28,8 +28,8 @@ fi
 
 
 mkdir -p /home/tmpBeegoInstallDir
-tar zxvf $tarPkgPath$newBeegoTar -C /home/tmpBeegoInstallDir/
-tmpBeegoInstallDirPkgs=`echo $newBeegoTar |awk -F ".tar.gz" '{print $1}'`
+tar zxvf $tarPkgPath$installPackages -C /home/tmpBeegoInstallDir/
+tmpBeegoInstallDirPkgs=`echo $installPackages |awk -F ".tar.gz" '{print $1}'`
 
 mkdir -p /usr/local/gopackage/src/github.com/astaxie/
 tar zxf /home/tmpBeegoInstallDir/${tmpBeegoInstallDirPkgs}/beego.tar.gz -C /usr/local/gopackage/src/github.com/astaxie/
