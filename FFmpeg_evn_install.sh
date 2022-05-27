@@ -1,22 +1,22 @@
 #!/bin/bash
 
 # 变量定义
-newFFmpegTar="ffmpeg-release-amd64-static.tar.xz"
+installPackages="ffmpeg-release-amd64-static.tar.xz"
 tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
 # 校验安装包是否存在
 check_pkg_sh=`echo $tarPkgPath |awk -F "pkg/" '{print $1}'`"check_pkg.sh"
-sh $check_pkg_sh $tarPkgPath$newFFmpegTar
+sh $check_pkg_sh $tarPkgPath$installPackages
 if [ $? -ne 0 ];then
-	echo "pkg file:[ $newFFmpegTar ] is ok"
+	echo "pkg file:[ $installPackages ] is ok"
 else
-	echo "Error: pkg file:[ $newFFmpegTar ] error, please confirm it"
+	echo "Error: pkg file:[ $installPackages ] error, please confirm it"
 	exit 0
 fi
 
 # 安装ffmpeg
-cp $tarPkgPath$newFFmpegTar /usr/local/
+cp $tarPkgPath$installPackages /usr/local/
 cd /usr/local/
-xz -d $newFFmpegTar
+xz -d $installPackages
 ffmpegTarTmp=`ls|grep ffmpeg`
 tar xf $ffmpegTarTmp
 ffmpegInstallDir=`ls|grep ffmpeg|grep -v tar`

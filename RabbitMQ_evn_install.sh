@@ -24,11 +24,13 @@
 
 # 变量定义
 installPackages="rabbitmq-server-3.6.9-1.el7.noarch.rpm"
+tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
 
 # cp 未完待续
 
 cd /usr/local
-wget --content-disposition https://packagecloud.io/rabbitmq/rabbitmq-server/packages/el/7/rabbitmq-server-3.6.9-1.el7.noarch.rpm/download.rpm
+# wget --content-disposition https://packagecloud.io/rabbitmq/rabbitmq-server/packages/el/7/rabbitmq-server-3.6.9-1.el7.noarch.rpm/download.rpm
+cp $tarPkgPath$installPackages /usr/local/
 rpmMd5Shell=`md5sum $installPackages`
 # d739a08b1845e35fe269da4b2e41f1c1  rabbitmq-server-3.6.9-1.el7.noarch.rpm
 rpmMd5=`echo $rpmMd5Shell |awk -F " " '{print $1}'`
@@ -43,7 +45,14 @@ fi
 yum install -y epel-release
 yum install -y erlang
 yum install -y $installPackages
-rabbitmq-server -detached
+# rabbitmq-server -detached
+
+# 在/etc/hosts添加本机hostname及其IP能解决rabbitmq缓慢的问题
+localIp=`hostname -I| grep -o -e '[0-9]\{1,3\}.[0-9]\{1,3\}.[0-9]\{1,3\}.[0-9]\{1,3\}' |head -n 1`
+localHostname=`hostname`
+echo "${localIp} ${localHostname}" >> /etc/hosts
+
+systemctl start rabbitmq-server
 sleep 10
 
 # 新增用户

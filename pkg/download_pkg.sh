@@ -18,4 +18,6 @@ wget https://download.redis.io/releases/redis-7.0.0.tar.gz
 
 wget http://www.lua.org/ftp/lua-5.4.4.tar.gz
 
+wget --content-disposition https://packagecloud.io/rabbitmq/rabbitmq-server/packages/el/7/rabbitmq-server-3.6.9-1.el7.noarch.rpm/download.rpm
+
 set +x
