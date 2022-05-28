@@ -18,7 +18,9 @@ fi
 tar zxf $tarPkgPath$installPackages -C /usr/local/
 sed -i '$a export PATH=$PATH:/usr/local/mongodb-linux-x86_64-3.0.1/bin' /etc/profile
 # source /etc/profile
-echo -e "手动执行下>>>>  \n              source /etc/profile \n命令 \n,(这个问题留着后面解决一下)"
+# echo -e "手动执行下>>>>  \n              source /etc/profile \n命令 \n,(这个问题留着后面解决一下)"
+sourceScript=`echo $0 |awk -F "Mongodb_evn_install.sh" '{print $1}'`"source_etc_profile.sh"
+source $sourceScript
 
 
 

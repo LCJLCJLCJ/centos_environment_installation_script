@@ -66,6 +66,8 @@ rabbitmqctl set_user_tags $user administrator
 rabbitmq-plugins enable rabbitmq_management
 systemctl restart rabbitmq-server
 
+systemctl enable rabbitmq-server
+
 rm -rf $installPackages
 
 # 方法2  end

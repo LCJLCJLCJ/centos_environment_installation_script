@@ -21,7 +21,9 @@ sed -i '$a export GOROOT=/usr/local/go' /etc/profile
 sed -i '$a export GOPATH=/usr/local/gopackage' /etc/profile
 sed -i '$a export PATH=$PATH:$GOROOT/bin:$GOPATH/bin' /etc/profile
 # source /etc/profile
-echo -e "手动执行下>>>>  \n              source /etc/profile \n命令 \n,(这个问题留着后面解决一下)"
+# echo -e "手动执行下>>>>  \n              source /etc/profile \n命令 \n,(这个问题留着后面解决一下)"
+sourceScript=`echo $0 |awk -F "Golang_evn_install.sh" '{print $1}'`"source_etc_profile.sh"
+source $sourceScript
 
 echo "go version"
 go version
