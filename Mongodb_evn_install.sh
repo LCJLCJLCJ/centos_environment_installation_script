@@ -2,7 +2,10 @@
 
 # 变量定义
 installPackages="mongodb-linux-x86_64-3.0.1.tgz"
-tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
+# tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
+pkgPathPart="/pkg/"
+DIR=$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd);
+tarPkgPath=$DIR$pkgPathPart
 # 校验安装包是否存在
 check_pkg_sh=`echo $tarPkgPath |awk -F "pkg/" '{print $1}'`"check_pkg.sh"
 sh $check_pkg_sh $tarPkgPath$installPackages
@@ -17,10 +20,11 @@ fi
 # 安装Mongodb
 tar zxf $tarPkgPath$installPackages -C /usr/local/
 sed -i '$a export PATH=$PATH:/usr/local/mongodb-linux-x86_64-3.0.1/bin' /etc/profile
-# source /etc/profile
+source /etc/profile
 # echo -e "手动执行下>>>>  \n              source /etc/profile \n命令 \n,(这个问题留着后面解决一下)"
-sourceScript=`echo $0 |awk -F "Mongodb_evn_install.sh" '{print $1}'`"source_etc_profile.sh"
-source $sourceScript
+echo -e "对于shell脚本执行 source /etc/profile 不能在脚本外部生效，问题解决办法：
+1.手动执行下source /etc/profile
+2.重启系统也可恢复正常"
 
 
 

@@ -2,7 +2,10 @@
 
 # 变量定义
 installPackages="lua-5.4.4.tar.gz"
-tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
+# tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
+pkgPathPart="/pkg/"
+DIR=$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd);
+tarPkgPath=$DIR$pkgPathPart
 # 校验安装包是否存在
 check_pkg_sh=`echo $tarPkgPath |awk -F "pkg/" '{print $1}'`"check_pkg.sh"
 sh $check_pkg_sh $tarPkgPath$installPackages

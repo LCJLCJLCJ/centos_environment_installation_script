@@ -2,7 +2,10 @@
 
 # 变量定义
 installPackages="beego_install_pkg.tar.gz"
-tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
+# tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
+pkgPathPart="/pkg/"
+DIR=$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd);
+tarPkgPath=$DIR$pkgPathPart
 includeGo="go1.15.6.linux-amd64.tar.gz"
 # 校验安装包是否存在
 check_pkg_sh=`echo $tarPkgPath |awk -F "pkg/" '{print $1}'`"check_pkg.sh"

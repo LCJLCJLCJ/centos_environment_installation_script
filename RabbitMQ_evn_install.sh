@@ -24,7 +24,10 @@
 
 # 变量定义
 installPackages="rabbitmq-server-3.6.9-1.el7.noarch.rpm"
-tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
+# tarPkgPath="/home/muzi/winShared/Scripts/pkg/"
+pkgPathPart="/pkg/"
+DIR=$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd);
+tarPkgPath=$DIR$pkgPathPart
 
 # cp 未完待续
 
